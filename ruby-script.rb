@@ -4,14 +4,14 @@ require 'json'
 
 json = File.read('login.json')
 login = JSON.parse(json)
-data.keys
+login.keys
 
 browser = Watir::Browser.new
 browser.goto 'https://www.linkedin.com/uas/login?trk=guest_homepage-basic_nav-header-signin'
 
 
-browser.text_field(id: 'username').set data["email"]
-browser.text_field(id: 'password').set data["password"]
+browser.text_field(id: 'username').set login["email"]
+browser.text_field(id: 'password').set login["password"]
 browser.button(value: 'Sign in').click
 browser.link(href: '/messaging/').click
 browser.link(href: '/messaging/compose/').click
